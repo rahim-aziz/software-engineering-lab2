@@ -20,9 +20,8 @@ jobs:
 
     - name: Restart Docker Container on EC2
       run: |
-        ssh -o StrictHostKeyChecking=no ec2-user@3.27.204.8
+        ssh -o StrictHostKeyChecking=no ec2-user@3.27.204.8 << 'EOF'
         "docker stop my_container || true"
-        ssh -o StrictHostKeyChecking=no ec2-user@3.27.204.8
         "docker rm my_container || true"
-        ssh -o StrictHostKeyChecking=no ec2-user@3.27.204.8
-      "docker run -d -p 80:80 --name my_container myapp"
+        "docker run -d -p 80:80 --name my_container myapp"
+        EOF
