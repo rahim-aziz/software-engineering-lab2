@@ -21,4 +21,4 @@ jobs:
     - name: Restart Docker Container on EC2
       run: |
         ssh -o StrictHostKeyChecking=no ec2-user@3.27.204.8
-        "docker stop my_container"
+        "whoami"
