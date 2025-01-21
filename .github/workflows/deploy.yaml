@@ -25,6 +25,13 @@ jobs:
         git pull origin main
         EOF
 
+    - name: Rebuild docker image
+      run: |
+        ssh -o StrictHostKeyChecking=no ec2-user@3.27.204.8 << 'EOF' 
+        cd /home/ec2-user/git/software-engineering-lab2
+        docker build -t myapp .
+        EOF
+
     - name: Restart Docker Container on EC2
       run: |
         ssh -o StrictHostKeyChecking=no ec2-user@3.27.204.8 << 'EOF' 
