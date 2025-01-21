@@ -20,7 +20,8 @@ jobs:
 
     - name: Restart Docker Container on EC2
       run: |
-        ssh -o StrictHostKeyChecking=no ec2-user@3.27.204.8 << 'EOF'
-        export PATH=$PATH:/usr/local/bin
-        docker ps
+        ssh -o StrictHostKeyChecking=no ec2-user@3.27.204.8 << 'EOF' 
+        docker stop my_container
+        docker rm my_container
+        docker run -d -p 80:80 --name my_container myapp
         EOF
