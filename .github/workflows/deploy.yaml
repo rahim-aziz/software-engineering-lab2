@@ -20,7 +20,10 @@ jobs:
 
     - name: Copy files to EC2
       run: |
-      scp -o StrictHostKeyChecking=no ./index.html ec2-user@3.27.204.8:/home/ec2-user/git/software-engineering-lab2
+        ssh -o StrictHostKeyChecking=no ec2-user@3.27.204.8 << 'EOF' 
+        cd /home/ec2-user/git/software-engineering-lab2
+        git pull origin main
+        EOF
 
     - name: Restart Docker Container on EC2
       run: |
