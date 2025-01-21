@@ -23,4 +23,6 @@ jobs:
         ssh -o StrictHostKeyChecking=no ec2-user@3.27.204.8
         "docker stop my_container || true"
         ssh -o StrictHostKeyChecking=no ec2-user@3.27.204.8
+        "docker rm my_container || true"
+        ssh -o StrictHostKeyChecking=no ec2-user@3.27.204.8
       "docker run -d -p 80:80 --name my_container myapp"
